@@ -507,27 +507,7 @@ void planeC(){
 }
 
 void drawLight(){
-    /*glPushMatrix();
-    glTranslated(car[12].X-2,car[12].Y+6,car[12].Z-2);
-    glRotated(-90,1,0,0);
-    quadratic = gluNewQuadric();
-    color3(color(0,1,0));
-    gluCylinder(quadratic,3,3,3,64,64);
-    glPopMatrix();
-    glPushMatrix();
-    glTranslated(car[12].X-2,car[12].Y+9,car[12].Z-2);
-    glRotated(-90,1,0,0);
-    quadratic = gluNewQuadric();
-    color3(color(0.3,0,0));
-    gluCylinder(quadratic,3,3,3,64,64);
-    glPopMatrix();
-    glPushMatrix();
-    glTranslated(car[12].X-2,car[12].Y+12,car[12].Z-2);
-    glRotated(-90,1,0,0);
-    quadratic = gluNewQuadric();
-    color3(color(1,1,0));
-    gluCylinder(quadratic,3,3,3,64,64);
-    glPopMatrix();*/
+   
 
     glPushMatrix();
     glTranslated(car[12].X-4,car[12].Y+15,car[12].Z-2);
@@ -950,114 +930,6 @@ void callOnce(){
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 	glTexImage2D(GL_TEXTURE_2D,0,GL_RGBA, (*img).imageWidth, (*img).imageHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE,(*linImg).ar);
 }
-
-
-
-
-/*
-void drawPillar(point3d p){
-    glPushMatrix();
-    glTranslated(p.X,p.Y,p.Z);
-    quadratic = gluNewQuadric();
-    glColor3d(0.8,0.8,1);
-    glRotated(90,1,0,0);
-    gluCylinder(quadratic,45,25,40,64,64);
-    quadratic = gluNewQuadric();
-    glColor3d(0.6,0.6,0.6);
-    //glRotated(90,1,0,0);
-    gluCylinder(quadratic,25,25,200,64,64);
-    glPopMatrix();
-}
-
-void drawBridge(){
-    point3d eightPoints[9];
-    //eightPoints[0] = point3d(-100,-8,+10000);
-    eightPoints[0] = point3d(-100,-8,-10000);
-    eightPoints[1] = point3d(-100,-8,-10000);
-    eightPoints[2] = point3d(100,-8,-10000);
-    eightPoints[3] = point3d(100,-8,+10000);
-
-    eightPoints[4] = point3d(-100,-20,+10000);
-    eightPoints[5] = point3d(-100,-20,-10000);
-    eightPoints[6] = point3d(100,-20,-10000);
-    eightPoints[7] = point3d(100,-20,+10000);
-
-    eightPoints[9] = point3d(-100,-8,+10000);
-
-    color sixColors[6];
-    sixColors[0]=color(60,60,60);
-    sixColors[1]=color(0.9,0.9,0.9);
-    sixColors[2]=color(0,60,60);
-    sixColors[3]=color(0.9,0.9,0.9);
-    sixColors[4]=color(0.9,0.9,0.9);
-    sixColors[5]=color(0,0,0);
-
-
-    drawQuad(eightPoints[9],eightPoints[1],eightPoints[2],eightPoints[3],sixColors[0]);
-    drawQuad(eightPoints[9],eightPoints[1],eightPoints[5],eightPoints[4],sixColors[1]);
-    drawQuad(eightPoints[2],eightPoints[3],eightPoints[7],eightPoints[6],sixColors[3]);
-    drawQuad(eightPoints[4],eightPoints[5],eightPoints[6],eightPoints[7],sixColors[5]);
-
-
-
-    eightPoints[0] = point3d(-100,-8,-10000);
-    eightPoints[1] = point3d(-100,-8,-10000);
-    eightPoints[2] = point3d(-90,-8,-10000);
-    eightPoints[3] = point3d(-90,-8,+10000);
-    eightPoints[4] = point3d(-100,4,+10000);
-    eightPoints[5] = point3d(-100,4,-10000);
-    eightPoints[6] = point3d(-90,4,-10000);
-    eightPoints[7] = point3d(-90,4,+10000);
-    eightPoints[9] = point3d(-100,-8,+10000);
-    drawQuad(eightPoints[9],eightPoints[1],eightPoints[2],eightPoints[3],sixColors[0]);
-    drawQuad(eightPoints[9],eightPoints[1],eightPoints[5],eightPoints[4],sixColors[1]);
-    drawQuad(eightPoints[2],eightPoints[3],eightPoints[7],eightPoints[6],sixColors[3]);
-    drawQuad(eightPoints[4],eightPoints[5],eightPoints[6],eightPoints[7],sixColors[5]);
-
-    eightPoints[0] = point3d(100,-8,-10000);
-    eightPoints[1] = point3d(100,-8,-10000);
-    eightPoints[2] = point3d(90,-8,-10000);
-    eightPoints[3] = point3d(90,-8,+10000);
-    eightPoints[4] = point3d(100,4,+10000);
-    eightPoints[5] = point3d(100,4,-10000);
-    eightPoints[6] = point3d(90,4,-10000);
-    eightPoints[7] = point3d(90,4,+10000);
-    eightPoints[9] = point3d(100,-8,+10000);
-    drawQuad(eightPoints[9],eightPoints[1],eightPoints[2],eightPoints[3],sixColors[0]);
-    drawQuad(eightPoints[9],eightPoints[1],eightPoints[5],eightPoints[4],sixColors[1]);
-    drawQuad(eightPoints[2],eightPoints[3],eightPoints[7],eightPoints[6],sixColors[3]);
-    drawQuad(eightPoints[4],eightPoints[5],eightPoints[6],eightPoints[7],sixColors[5]);
-
-
-}
-
-
-void drawRoad(){
-    glPushMatrix();
-    if(state==SCENE_IN_MOTION) motion();
-    /*glBegin(GL_QUADS);
-    color3(color(60,60,60));
-    glVertex3d(-100,-8,+10000);
-    glVertex3d(-100,-8,-10000);
-    glVertex3d(100,-8,-10000);
-    glVertex3d(100,-8,+10000);
-    glEnd();*/
-/*
-    for(int i = -10000; i<9950;i+=50){
-        glBegin(GL_QUADS);
-        color3(color(1,1,0));
-        glVertex3d(-2,-7.5,i+45);
-        glVertex3d(-2,-7.5,i);
-        glVertex3d(2,-7.5,i);
-        glVertex3d(2,-7.5,i+45);
-        glEnd();
-        if(i%1000==0) drawPillar(point3d(0,-20,i));
-    }
-
-
-    drawBridge();
-    glPopMatrix();
-}*/
 
 void display(){
     glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
