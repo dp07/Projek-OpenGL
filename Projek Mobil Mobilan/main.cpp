@@ -507,7 +507,7 @@ void planeC(){
 }
 
 void drawLight(){
-   
+
 
     glPushMatrix();
     glTranslated(car[12].X-4,car[12].Y+15,car[12].Z-2);
@@ -1065,7 +1065,7 @@ int main(int argc, char *argv[]){
     glutInitWindowSize(W,H);
     glutInitWindowPosition(0,0);
     glutInitDisplayMode(GLUT_RGB|GLUT_DOUBLE|GLUT_DEPTH);
-    glutCreateWindow("Gambar Mobil");
+    glutCreateWindow("3D Mobil");
     init();
     glutReshapeFunc(resize);
     glutDisplayFunc(display);
